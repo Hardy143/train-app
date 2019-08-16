@@ -11,18 +11,12 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchView: UIView!
-    
-    let data = ["a", "b", "c", "d", "e"]
-    var filteredData: [String]!
-    var searchController: UISearchController!
     
     let parser = Parser()
-    var timeTableItem: [TimeTableItem] = []
+    var stations: [Station] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filteredData = data
 
         
 //        parser.parse(url: TrainAPIEndpoints.bangor) { timeTableData in
@@ -37,7 +31,7 @@ class HomeViewController: UIViewController {
     }
     
     func registerTableViewCells() {
-        tableView.backgroundColor = UIColor(red: 63/255, green: 62/255, blue: 72/255, alpha: 1)
+        tableView.backgroundColor = .slateGray
         let customCell = UINib(nibName: "DepartureViewCell", bundle: nil)
         tableView.register(customCell, forCellReuseIdentifier: "cell")
     }
@@ -49,18 +43,30 @@ class HomeViewController: UIViewController {
     @IBAction func deleteButtonPressed(_ sender: Any) {
     }
     
+    func updateDepartureStations(withStation: Station) {
+        stations.append(withStation)
+        tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSearch" {
+            let popoverViewController = segue.destination as! SearchStationTableViewController
+            popoverViewController.delegate = self
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DepartureViewCell
-        cell.trainStationName.text = "Bangor Train Station"
-        cell.trainStationLocation.text = "Bangor"
+        cell.trainStationName.text = stations[indexPath.row].name
+        cell.trainStationLocation.text = stations[indexPath.row].location
         return cell 
     }
 

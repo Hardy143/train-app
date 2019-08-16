@@ -17,7 +17,8 @@ class DepartureViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        containerView.applyShadow()
+        trainStationName.textColor = .turquoise
+        trainStationLocation.textColor = .turquoise
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

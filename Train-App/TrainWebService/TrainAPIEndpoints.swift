@@ -17,4 +17,6 @@ struct TrainAPIEndpoints {
     static let holywood = "https://apis.opendatani.gov.uk/translink/3044C1.xml"
     static let lanyonPlace = "https://apis.opendatani.gov.uk/translink/3043AF.xml"
     static let titanicQuarter = "https://apis.opendatani.gov.uk/translink/3042A4.xml"
+    
+    static let allStations = "https://data.nicva.org/api/action/datastore/search.json?resource_id=ef0a44e9-3edb-4f0b-b37d-9cc07d67553c"
 }
