@@ -8,17 +8,15 @@
 
 import UIKit
 
-class DepartureViewCell: UITableViewCell {
+class StationNameViewCell: UITableViewCell {
 
     @IBOutlet weak var trainStationName: UILabel!
-    @IBOutlet weak var trainStationLocation: UILabel!
     @IBOutlet weak var containerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         trainStationName.textColor = .turquoise
-        trainStationLocation.textColor = .turquoise
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

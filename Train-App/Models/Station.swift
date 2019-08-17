@@ -10,13 +10,5 @@ import Foundation
 
 struct Station {
     var name: String
-    var location: String
 }
 
-struct StationList {
-    let stations = [
-        (name: "Bangor Train Station", location: "Bangor"),
-        (name: "Lanyon Place Train Station", location: "Belfast"),
-        (name: "Botanic Train Station", location: "Belfast"),
-        (name: "Great Victoria Streen Train Station", location: "Belfast")]
-}

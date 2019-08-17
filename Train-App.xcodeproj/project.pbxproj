@@ -16,8 +16,8 @@
 		993F8C5321EA72DD00FE744C /* Train_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F8C5221EA72DD00FE744C /* Train_AppTests.swift */; };
 		993F8C5E21EA782A00FE744C /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F8C5D21EA782A00FE744C /* Parser.swift */; };
 		995E31A822E399B0001BDDB5 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E31A722E399B0001BDDB5 /* Station.swift */; };
-		995E31AD22E39ABF001BDDB5 /* DepartureViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E31AB22E39ABF001BDDB5 /* DepartureViewCell.swift */; };
-		995E31AE22E39ABF001BDDB5 /* DepartureViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995E31AC22E39ABF001BDDB5 /* DepartureViewCell.xib */; };
+		995E31AD22E39ABF001BDDB5 /* StationNameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E31AB22E39ABF001BDDB5 /* StationNameViewCell.swift */; };
+		995E31AE22E39ABF001BDDB5 /* StationNameViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995E31AC22E39ABF001BDDB5 /* StationNameViewCell.xib */; };
 		995E31B322E39BA7001BDDB5 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E31B222E39BA7001BDDB5 /* UIView + Extension.swift */; };
 		995E31BA22E3A638001BDDB5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E31B822E3A638001BDDB5 /* SearchViewController.swift */; };
 		995E31BB22E3A638001BDDB5 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995E31B922E3A638001BDDB5 /* SearchViewController.xib */; };
@@ -28,6 +28,7 @@
 		99D0BE432306D8A8001429D1 /* SearchStationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE422306D8A8001429D1 /* SearchStationTableViewController.swift */; };
 		99D0BE46230714FA001429D1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE45230714FA001429D1 /* UIColor+Extension.swift */; };
 		99D0BE4B23072670001429D1 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE4A23072670001429D1 /* JsonParser.swift */; };
+		99D0BE4D23086768001429D1 /* DeparturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE4C23086768001429D1 /* DeparturesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +55,8 @@
 		993F8C5421EA72DD00FE744C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		993F8C5D21EA782A00FE744C /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		995E31A722E399B0001BDDB5 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
-		995E31AB22E39ABF001BDDB5 /* DepartureViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureViewCell.swift; sourceTree = "<group>"; };
-		995E31AC22E39ABF001BDDB5 /* DepartureViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureViewCell.xib; sourceTree = "<group>"; };
+		995E31AB22E39ABF001BDDB5 /* StationNameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationNameViewCell.swift; sourceTree = "<group>"; };
+		995E31AC22E39ABF001BDDB5 /* StationNameViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationNameViewCell.xib; sourceTree = "<group>"; };
 		995E31B222E39BA7001BDDB5 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		995E31B822E3A638001BDDB5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		995E31B922E3A638001BDDB5 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 		99D0BE422306D8A8001429D1 /* SearchStationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStationTableViewController.swift; sourceTree = "<group>"; };
 		99D0BE45230714FA001429D1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		99D0BE4A23072670001429D1 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
+		99D0BE4C23086768001429D1 /* DeparturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeparturesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +159,8 @@
 			children = (
 				99B638EF223DB2C1004751D8 /* TimeTableViewCell.swift */,
 				99B638F0223DB2C1004751D8 /* TimeTableViewCell.xib */,
-				995E31AB22E39ABF001BDDB5 /* DepartureViewCell.swift */,
-				995E31AC22E39ABF001BDDB5 /* DepartureViewCell.xib */,
+				995E31AB22E39ABF001BDDB5 /* StationNameViewCell.swift */,
+				995E31AC22E39ABF001BDDB5 /* StationNameViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -168,6 +170,7 @@
 			children = (
 				993F8C3C21EA72DC00FE744C /* HomeViewController.swift */,
 				99D0BE422306D8A8001429D1 /* SearchStationTableViewController.swift */,
+				99D0BE4C23086768001429D1 /* DeparturesViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -272,7 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				995E31AE22E39ABF001BDDB5 /* DepartureViewCell.xib in Resources */,
+				995E31AE22E39ABF001BDDB5 /* StationNameViewCell.xib in Resources */,
 				99B638F2223DB2C1004751D8 /* TimeTableViewCell.xib in Resources */,
 				995E31BB22E3A638001BDDB5 /* SearchViewController.xib in Resources */,
 				993F8C4821EA72DD00FE744C /* LaunchScreen.storyboard in Resources */,
@@ -297,7 +300,7 @@
 			files = (
 				99B638F1223DB2C1004751D8 /* TimeTableViewCell.swift in Sources */,
 				995E31BA22E3A638001BDDB5 /* SearchViewController.swift in Sources */,
-				995E31AD22E39ABF001BDDB5 /* DepartureViewCell.swift in Sources */,
+				995E31AD22E39ABF001BDDB5 /* StationNameViewCell.swift in Sources */,
 				993F8C5E21EA782A00FE744C /* Parser.swift in Sources */,
 				99D0BE432306D8A8001429D1 /* SearchStationTableViewController.swift in Sources */,
 				99B638E5223D6C57004751D8 /* TimeTableItem.swift in Sources */,
@@ -306,6 +309,7 @@
 				993F8C3B21EA72DC00FE744C /* AppDelegate.swift in Sources */,
 				995E31A822E399B0001BDDB5 /* Station.swift in Sources */,
 				99D0BE46230714FA001429D1 /* UIColor+Extension.swift in Sources */,
+				99D0BE4D23086768001429D1 /* DeparturesViewController.swift in Sources */,
 				995E31B322E39BA7001BDDB5 /* UIView + Extension.swift in Sources */,
 				99D0BE4B23072670001429D1 /* JsonParser.swift in Sources */,
 				99B638E2223D69CC004751D8 /* TrainAPIEndpoints.swift in Sources */,

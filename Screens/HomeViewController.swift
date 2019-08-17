@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, SearchDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,11 +28,17 @@ class HomeViewController: UIViewController {
 //        }
 
         registerTableViewCells()
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     func registerTableViewCells() {
         tableView.backgroundColor = .slateGray
-        let customCell = UINib(nibName: "DepartureViewCell", bundle: nil)
+        let customCell = UINib(nibName: "StationNameViewCell", bundle: nil)
         tableView.register(customCell, forCellReuseIdentifier: "cell")
     }
     
@@ -64,9 +70,9 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DepartureViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StationNameViewCell
         cell.trainStationName.text = stations[indexPath.row].name
-        cell.trainStationLocation.text = stations[indexPath.row].location
+       // cell.trainStationLocation.text = stations[indexPath.row].location
         return cell 
     }
 
@@ -80,12 +86,5 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 
-extension HomeViewController: UISearchResultsUpdating {
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-}
 
 

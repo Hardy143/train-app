@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol SearchDelegate: class {
+    func updateDepartureStations(withStation: Station)
+}
+
 class SearchStationTableViewController: UITableViewController {
 
     var stations: [String] = []
-    var filteredData: [(name: String, location: String)]!
+    var filteredData: [String] = []
     var chosenStation: Station?
     var searchController: UISearchController!
-    var delegate: HomeViewController?
+    weak var delegate: SearchDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +34,7 @@ class SearchStationTableViewController: UITableViewController {
     }
     
     func registerTableViewCells() {
-        let customCell = UINib(nibName: "DepartureViewCell", bundle: nil)
+        let customCell = UINib(nibName: "StationNameViewCell", bundle: nil)
         tableView.register(customCell, forCellReuseIdentifier: "cell")
     }
     
@@ -52,6 +56,7 @@ class SearchStationTableViewController: UITableViewController {
         searchController.searchBar.sizeToFit()
         let cancelButton = searchController.searchBar.value(forKeyPath: "cancelButton") as? UIButton
         let searchBackground = searchController.searchBar.value(forKeyPath: "searchField") as? UITextField
+        searchBackground?.textColor = .lightGray
         searchBackground?.backgroundColor = .nightBlack
         cancelButton?.tintColor = .salmonRed
     }
@@ -59,42 +64,58 @@ class SearchStationTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        if searchController.isActive {
+            return filteredData.count
+        }
+        
         return stations.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DepartureViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StationNameViewCell
+        cell.selectionStyle = .none
+        
+        if searchController.isActive {
+            cell.trainStationName.text = filteredData[indexPath.row]
+            return cell
+        }
+        
         cell.trainStationName.text = stations[indexPath.row]
-        //cell.trainStationLocation.text = stations[indexPath.row].location
         cell.selectionStyle = .none
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //chosenStation = Station(name: stations[indexPath.row].name, location: stations[indexPath.row].location)
+        if searchController.isActive {
+            chosenStation = Station(name: filteredData[indexPath.row])
+        } else {
+            chosenStation = Station(name: stations[indexPath.row])
+        }
+        
         if let station = chosenStation {
             delegate?.updateDepartureStations(withStation: station)
             self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)     
         }
-        
     }
-
 }
 
 extension SearchStationTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-   
+        if let searchText = searchController.searchBar.text {
+            filteredData = searchText.isEmpty ? stations : stations.filter({ (dataString: String) -> Bool in
+                return dataString.range(of: searchText, options: .caseInsensitive) != nil
+            })
+            tableView.reloadData()
+        }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print("button pressed")
         dismiss(animated: true, completion: nil)
     }
 }
