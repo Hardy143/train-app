@@ -66,7 +66,22 @@ struct TrainAPIEndpoints {
     static let whitehead = "https://apis.opendatani.gov.uk/translink/3045D6.xml"
     static let yorkgate = "https://apis.opendatani.gov.uk/translink/3045D8.xml"
     
+    static let apis: [String: String] = [
+        "Adelaide": "https://apis.opendatani.gov.uk/translink/3042A0.xml",
+        "Bangor": "https://apis.opendatani.gov.uk/translink/3042A7.xml"]
+    
     static let allStations = "https://data.nicva.org/api/action/datastore/search.json?resource_id=ef0a44e9-3edb-4f0b-b37d-9cc07d67553c"
+    
+    static func getAPI(stationName: String) -> String {
+        var api = ""
+        for (key, value) in apis {
+            if stationName == key {
+                api = value
+            }
+        }
+        
+        return api
+    }
 }
 
 

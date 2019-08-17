@@ -111,7 +111,7 @@ extension Parser: XMLParserDelegate {
                 }
             case TrainXMLFile.Elements().destination:
                 if let destination = attributeDict[TrainXMLFile.Attributes().destinationName] {
-                    currentDestination = "Destionation: \(destination)"
+                    currentDestination = "Destination: \(destination)"
                 }
             default:
                 break
@@ -128,7 +128,9 @@ extension Parser: XMLParserDelegate {
         
         if elementName == TrainXMLFile.Elements().service {
             let timeTableItem = TimeTableItem(destination: currentDestination, departTime: currentDepartTime, platform: currentPlatform)
-            self.timeTableItems.append(timeTableItem)
+            if timeTableItem.departTime != "" {
+                self.timeTableItems.append(timeTableItem)
+            }
         }
     }
     

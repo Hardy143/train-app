@@ -23,7 +23,8 @@ class DeparturesViewController: UIViewController {
         configureTableView()
         registerTableViewCells()
         
-        parser.parse(url: TrainAPIEndpoints.bangor) { timeTableData in
+        let apiURL = TrainAPIEndpoints.getAPI(stationName: stationName)
+        parser.parse(url: apiURL) { timeTableData in
             self.timeTableItems = timeTableData
             print(self.timeTableItems)
             DispatchQueue.main.async {

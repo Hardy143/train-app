@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, SearchDelegate {
         if segue.identifier == "showDepartureInfo" {
             let viewController = segue.destination as! DeparturesViewController
             if let station = chosenStation {
-                viewController.stationName = "\(station.name) Departures"
+                viewController.stationName = station.name
             }
         }
     }
