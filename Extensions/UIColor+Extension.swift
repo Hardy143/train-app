@@ -17,4 +17,5 @@ extension UIColor {
     static let turquoise = UIColor(red: 45/255, green: 216/255, blue: 193/255, alpha: 1)
     static let lightGray = UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1)
     static let lylic = UIColor(red: 173/255, green: 169/255, blue: 247/255, alpha: 1)
+    static let tahitiGold = UIColor(red: 230/255, green: 126/255, blue: 34/255, alpha: 1)
 }

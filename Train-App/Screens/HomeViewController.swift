@@ -12,20 +12,11 @@ class HomeViewController: UIViewController, SearchDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let parser = Parser()
     var stations: [Station] = []
+    var chosenStation: Station?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-//        parser.parse(url: TrainAPIEndpoints.bangor) { timeTableData in
-//            self.timeTableItem = timeTableData
-//            print(self.timeTableItem)
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        }
 
         registerTableViewCells()
         tableView.reloadData()
@@ -37,9 +28,9 @@ class HomeViewController: UIViewController, SearchDelegate {
     }
     
     func registerTableViewCells() {
-        tableView.backgroundColor = .slateGray
+        tableView.backgroundColor = .nightBlack
         let customCell = UINib(nibName: "StationNameViewCell", bundle: nil)
-        tableView.register(customCell, forCellReuseIdentifier: "cell")
+        tableView.register(customCell, forCellReuseIdentifier: "StationNameViewCell")
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -59,6 +50,13 @@ class HomeViewController: UIViewController, SearchDelegate {
             let popoverViewController = segue.destination as! SearchStationTableViewController
             popoverViewController.delegate = self
         }
+        
+        if segue.identifier == "showDepartureInfo" {
+            let viewController = segue.destination as! DeparturesViewController
+            if let station = chosenStation {
+                viewController.stationName = station.name
+            }
+        }
     }
     
 }
@@ -70,9 +68,9 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StationNameViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StationNameViewCell", for: indexPath) as! StationNameViewCell
+        cell.selectionStyle = .none
         cell.trainStationName.text = stations[indexPath.row].name
-       // cell.trainStationLocation.text = stations[indexPath.row].location
         return cell 
     }
 
@@ -81,7 +79,8 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        chosenStation = Station(name: stations[indexPath.row].name)
+        performSegue(withIdentifier: "showDepartureInfo", sender: nil)
     }
     
 }

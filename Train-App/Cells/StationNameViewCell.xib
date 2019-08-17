@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wbK-YJ-Tg0" userLabel="Container View">
-                        <rect key="frame" x="0.0" y="5" width="413" height="95.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="413" height="100.5"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UiL-5v-j4v">
-                                <rect key="frame" x="10" y="15" width="393" height="65.5"/>
+                                <rect key="frame" x="10" y="15" width="393" height="70.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Train Station Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQV-td-uaD">
-                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="65.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160.5" height="70.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                 <color key="backgroundColor" red="0.24715673923492432" green="0.24252709746360779" blue="0.27843639254570007" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="wbK-YJ-Tg0" secondAttribute="trailing" id="8ac-6j-9Rm"/>
-                    <constraint firstItem="wbK-YJ-Tg0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="GFH-U5-ROn"/>
+                    <constraint firstItem="wbK-YJ-Tg0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GFH-U5-ROn"/>
                     <constraint firstAttribute="bottom" secondItem="wbK-YJ-Tg0" secondAttribute="bottom" constant="5" id="PSl-rY-qe7"/>
                     <constraint firstItem="wbK-YJ-Tg0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xjt-hD-vSa"/>
                 </constraints>

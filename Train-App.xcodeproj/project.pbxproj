@@ -91,8 +91,6 @@
 		993F8C2E21EA72DB00FE744C = {
 			isa = PBXGroup;
 			children = (
-				99D0BE44230714D9001429D1 /* Extensions */,
-				99D0BE3B2306D777001429D1 /* Screens */,
 				993F8C3921EA72DC00FE744C /* Train-App */,
 				993F8C5121EA72DD00FE744C /* Train-AppTests */,
 				993F8C3821EA72DC00FE744C /* Products */,
@@ -111,6 +109,8 @@
 		993F8C3921EA72DC00FE744C /* Train-App */ = {
 			isa = PBXGroup;
 			children = (
+				99D0BE44230714D9001429D1 /* Extensions */,
+				99D0BE3B2306D777001429D1 /* Screens */,
 				995E31B122E39B93001BDDB5 /* Extensions */,
 				99DC5EEA22E362EF00803D56 /* Models */,
 				99B638E8223D845C004751D8 /* Cells */,
@@ -180,7 +180,8 @@
 			children = (
 				99D0BE45230714FA001429D1 /* UIColor+Extension.swift */,
 			);
-			path = Extensions;
+			name = Extensions;
+			path = ../Extensions;
 			sourceTree = "<group>";
 		};
 		99DC5EEA22E362EF00803D56 /* Models */ = {

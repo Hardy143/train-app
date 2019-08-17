@@ -13,6 +13,7 @@ struct TrainXMLFile {
     struct Elements {
         let stationBoard = "StationBoard"
         let service = "Service"
+        let serviceType = "ServiceType"
         let departTime = "DepartTime"
         let platform = "Platform"
         let destination = "Destination1"
@@ -21,6 +22,7 @@ struct TrainXMLFile {
     struct Attributes {
         let stationName = "name"
         let serviceType = "TigerID"
+        let type = "Type"
         let time = "sorttimestamp"
         let number = "Number"
         let destinationName = "name"
@@ -82,17 +84,17 @@ extension Parser: XMLParserDelegate {
         
         currentElement = elementName
         
-        if currentElement == TrainXMLFile.Elements().stationBoard {
-            if let station = attributeDict[TrainXMLFile.Attributes().stationName] {
-                currentStation = station
-            }
-        }
-        
-        if currentElement == TrainXMLFile.Elements().service {
-            if attributeDict[TrainXMLFile.Attributes().serviceType] == "1" {
+        if currentElement == TrainXMLFile.Elements().serviceType {
+            if attributeDict[TrainXMLFile.Attributes().type] == "Originating" {
                 isOrigin = true
             } else {
                 isOrigin = false
+            }
+        }
+        
+        if currentElement == TrainXMLFile.Elements().stationBoard {
+            if let station = attributeDict[TrainXMLFile.Attributes().stationName] {
+                currentStation = station
             }
         }
         
@@ -124,7 +126,7 @@ extension Parser: XMLParserDelegate {
     
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
-        if elementName == TrainXMLFile.Elements().stationBoard {
+        if elementName == TrainXMLFile.Elements().service {
             let timeTableItem = TimeTableItem(station: currentStation, departTime: currentDepartTime, platform: currentPlatform, destination: currentDestination)
             self.timeTableItems.append(timeTableItem)
         }

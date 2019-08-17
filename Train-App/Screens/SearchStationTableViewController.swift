@@ -35,11 +35,11 @@ class SearchStationTableViewController: UITableViewController {
     
     func registerTableViewCells() {
         let customCell = UINib(nibName: "StationNameViewCell", bundle: nil)
-        tableView.register(customCell, forCellReuseIdentifier: "cell")
+        tableView.register(customCell, forCellReuseIdentifier: "StationNameViewCell")
     }
     
     func configureTableView() {
-        tableView.backgroundColor = .slateGray
+        tableView.backgroundColor = .nightBlack
         tableView.separatorStyle = .none
     }
     
@@ -76,7 +76,7 @@ class SearchStationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! StationNameViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StationNameViewCell", for: indexPath) as! StationNameViewCell
         cell.selectionStyle = .none
         
         if searchController.isActive {

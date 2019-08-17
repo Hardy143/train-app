@@ -19,7 +19,7 @@ class TimeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        containerView.applyShadow()
+        containerView.backgroundColor = .nightBlack
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
