@@ -9,8 +9,7 @@
 import Foundation
 
 struct TimeTableItem {
-    var station: String
+    var destination: String
     var departTime: String
     var platform: String
-    var destination: String
 }

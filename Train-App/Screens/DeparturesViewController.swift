@@ -58,10 +58,10 @@ extension DeparturesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TimeTableViewCell
-        cell.stationNameLabel.text = timeTableItems[indexPath.row].station
+        cell.selectionStyle = .none
+        cell.destinationNameLabel.text = timeTableItems[indexPath.row].destination
         cell.departTimeLabel.text = timeTableItems[indexPath.row].departTime
         cell.platformNoLabel.text = timeTableItems[indexPath.row].platform
-        cell.destinationLabel.text = timeTableItems[indexPath.row].destination
         return cell
     }
     
