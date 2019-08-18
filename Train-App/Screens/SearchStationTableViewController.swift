@@ -96,10 +96,15 @@ class SearchStationTableViewController: UITableViewController {
             chosenStation = Station(name: stations[indexPath.row])
         }
         
-        if let station = chosenStation {
-            delegate?.updateDepartureStations(withStation: station)
-            self.dismiss(animated: true, completion: nil)
-            self.dismiss(animated: true, completion: nil)     
+        performSegue(withIdentifier: "showDepartureInfo", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDepartureInfo" {
+            let viewController = segue.destination as! DeparturesViewController
+            if let station = chosenStation {
+                viewController.stationName = station.name
+            }
         }
     }
 }

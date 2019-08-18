@@ -47,6 +47,7 @@ class DeparturesViewController: UIViewController {
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }
@@ -60,11 +61,30 @@ extension DeparturesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TimeTableViewCell
         cell.selectionStyle = .none
+        let departTime = formatDate(dateString: timeTableItems[indexPath.row].departTime)
         cell.destinationNameLabel.text = timeTableItems[indexPath.row].destination
-        cell.departTimeLabel.text = timeTableItems[indexPath.row].departTime
+        cell.departTimeLabel.text = departTime
         cell.platformNoLabel.text = timeTableItems[indexPath.row].platform
         return cell
     }
     
     
+}
+
+// MARK: - Date formatting
+extension DeparturesViewController {
+    
+    func formatDate(dateString: String) -> String {
+    
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyyMMddHHmmss"
+    
+        let dateFomatterConvert = DateFormatter()
+        dateFomatterConvert.dateFormat = "h:mm a"
+        
+        if let date = dateFormatterGet.date(from: dateString) {
+            return dateFomatterConvert.string(from: date)
+        }
+        return ""
+    }
 }

@@ -42,27 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Train-App/TrainWebService/Parser.swift"
-            timestampString = "587765181.561143"
+            timestampString = "587835239.969227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "parse(url:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Train-App/TrainWebService/Parser.swift"
-            timestampString = "587765181.561494"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "parser(_:didStartElement:namespaceURI:qualifiedName:attributes:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -73,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Train-App/Screens/DeparturesViewController.swift"
-            timestampString = "587765181.561735"
+            filePath = "Train-App/TrainWebService/Parser.swift"
+            timestampString = "587835239.969286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "parser(_:didEndElement:namespaceURI:qualifiedName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Train-App/TrainWebService/Parser.swift"
-            timestampString = "587765181.561782"
+            timestampString = "587835239.969329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "parser(_:didStartElement:namespaceURI:qualifiedName:attributes:)"
             landmarkType = "7">
          </BreakpointContent>

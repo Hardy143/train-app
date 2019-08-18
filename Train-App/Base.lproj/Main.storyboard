@@ -35,6 +35,7 @@
                                         <state key="normal" image="icons8-go-back-90"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="a6W-oc-7cl" eventType="touchUpInside" id="cRq-48-DqU"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="returnHome" id="Dm2-AN-vpM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -86,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="env-iM-Cl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="-221"/>
+            <point key="canvasLocation" x="1727" y="133"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -153,9 +154,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="a6W-oc-7cl" kind="show" identifier="showDepartureInfo" id="tbP-hJ-JcI"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -186,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="102" y="133"/>
         </scene>
         <!--Search Station Table View Controller-->
         <scene sceneID="7rr-wt-C06">
@@ -205,6 +203,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="a6W-oc-7cl" kind="show" identifier="showDepartureInfo" id="2bu-Yk-epv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -215,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FFc-bL-RWk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="642"/>
+            <point key="canvasLocation" x="945" y="133"/>
         </scene>
     </scenes>
     <resources>

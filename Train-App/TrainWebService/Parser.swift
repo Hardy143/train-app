@@ -21,7 +21,6 @@ struct TrainXMLFile {
     
     struct Attributes {
         let stationName = "name"
-        let serviceType = "TigerID"
         let type = "Type"
         let time = "sorttimestamp"
         let number = "Number"
@@ -38,9 +37,9 @@ class Parser: NSObject {
     private var timeTableItems: [TimeTableItem] = []
     private var currentElement = ""
     private var currentStation = ""
-    private var currentDepartTime: String = ""
-    private var currentPlatform: String = ""
-    private var currentDestination: String = ""
+    private var currentDepartTime = ""
+    private var currentPlatform = ""
+    private var currentDestination = ""
     private var parserCompletionHandler: (([TimeTableItem]) -> Void)?
     private var isOrigin = false
     
@@ -48,8 +47,9 @@ class Parser: NSObject {
     func parse(url: String, completionHandler: @escaping ([TimeTableItem]) -> Void) {
         
         //self.parserCompletionHandler = completionHandler
+        guard let api = URL(string: url) else { return }
         
-        let request = URLRequest(url: URL(string: url)!)
+        let request = URLRequest(url: api)
         let urlSession = URLSession.shared
         let task = urlSession.dataTask(with: request) { (data, response, error) in
             
@@ -71,10 +71,6 @@ class Parser: NSObject {
         task.resume()
 
     }
-    
-    func getTimeTableItems() -> [TimeTableItem] {
-        return timeTableItems
-    }
 }
 
 extension Parser: XMLParserDelegate {
@@ -84,17 +80,18 @@ extension Parser: XMLParserDelegate {
         
         currentElement = elementName
         
-        if currentElement == TrainXMLFile.Elements().serviceType {
-            if attributeDict[TrainXMLFile.Attributes().type] == "Originating" {
-                isOrigin = true
-            } else {
-                isOrigin = false
-            }
-        }
-        
         if currentElement == TrainXMLFile.Elements().stationBoard {
             if let station = attributeDict[TrainXMLFile.Attributes().stationName] {
                 currentStation = station
+            }
+        }
+        
+        if currentElement == TrainXMLFile.Elements().serviceType {
+            if attributeDict[TrainXMLFile.Attributes().type] == "Originating" ||
+                attributeDict[TrainXMLFile.Attributes().type] == "Through" {
+                isOrigin = true
+            } else {
+                isOrigin = false
             }
         }
         
@@ -120,19 +117,23 @@ extension Parser: XMLParserDelegate {
         }
     }
     
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
-
-    }
-    
     func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         
         if elementName == TrainXMLFile.Elements().service {
             let timeTableItem = TimeTableItem(destination: currentDestination, departTime: currentDepartTime, platform: currentPlatform)
             if timeTableItem.departTime != "" {
                 self.timeTableItems.append(timeTableItem)
+                resetCurrentData()
             }
         }
     }
     
+    private func resetCurrentData() {
+        currentElement = ""
+        currentStation = ""
+        currentDepartTime = ""
+        currentPlatform = ""
+        currentDestination = ""
+    }
     
 }
