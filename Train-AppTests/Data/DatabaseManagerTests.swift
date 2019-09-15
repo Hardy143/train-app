@@ -58,8 +58,45 @@ extension DatabaseManagerTests {
         }
         
         waitForExpectations(timeout: 1.0) { _ in
-            self.sut.persistentContainer.persistentStoreCoordinator.destroyPersistentStore(type: NSSQLiteStoreType)
+           // self.sut.persistentContainer.persistentStoreCoordinator.destroyPersistentStore(type: NSSQLiteStoreType)
             
         }
+    }
+    
+    func testSetup_persistentContainerLoadedInMemory() {
+        let setupExpectation = expectation(description: "set up completion called")
+        
+        sut.setup(storeType: NSInMemoryStoreType) {
+            XCTAssertEqual(self.sut.persistentContainer.persistentStoreDescriptions.first?.type, NSInMemoryStoreType)
+            setupExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+}
+
+// MARk: - Context tests
+extension DatabaseManagerTests {
+    
+    func testBackgroundContext_concurrencyType() {
+        let setupExpectation = expectation(description: "background context")
+        
+        sut.setup(storeType: NSInMemoryStoreType) {
+            XCTAssertEqual(self.sut.backgroundContext.concurrencyType, .privateQueueConcurrencyType)
+            setupExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+    
+    func testMainContext_concurrencyType() {
+        let setupExpectation = expectation(description: "main context")
+        
+        sut.setup(storeType: NSInMemoryStoreType) {
+            XCTAssertEqual(self.sut.mainContext.concurrencyType, .mainQueueConcurrencyType)
+            setupExpectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 1.0, handler: nil)
     }
 }
