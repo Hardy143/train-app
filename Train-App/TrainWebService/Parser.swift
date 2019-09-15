@@ -87,8 +87,7 @@ extension Parser: XMLParserDelegate {
         }
         
         if currentElement == TrainXMLFile.Elements().serviceType {
-            if attributeDict[TrainXMLFile.Attributes().type] == "Originating" ||
-                attributeDict[TrainXMLFile.Attributes().type] == "Through" {
+            if attributeDict[TrainXMLFile.Attributes().type] != "Terminating" {
                 isOrigin = true
             } else {
                 isOrigin = false
