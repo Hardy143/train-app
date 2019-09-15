@@ -23,6 +23,9 @@
 		995E31BB22E3A638001BDDB5 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995E31B922E3A638001BDDB5 /* SearchViewController.xib */; };
 		99894800232E4E9600D54366 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998947FF232E4E9600D54366 /* DatabaseManager.swift */; };
 		99894803232E529A00D54366 /* DatabaseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99894802232E529A00D54366 /* DatabaseManagerTests.swift */; };
+		99894805232E634200D54366 /* StationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99894804232E634200D54366 /* StationDataManager.swift */; };
+		99894807232E64FB00D54366 /* StationDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99894806232E64FB00D54366 /* StationDataManagerTests.swift */; };
+		99894809232E659A00D54366 /* CoreDataTestStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99894808232E659A00D54366 /* CoreDataTestStack.swift */; };
 		99B638E2223D69CC004751D8 /* TrainAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B638E1223D69CC004751D8 /* TrainAPIEndpoints.swift */; };
 		99B638E5223D6C57004751D8 /* TimeTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B638E4223D6C57004751D8 /* TimeTableItem.swift */; };
 		99B638F1223DB2C1004751D8 /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B638EF223DB2C1004751D8 /* TimeTableViewCell.swift */; };
@@ -64,6 +67,9 @@
 		995E31B922E3A638001BDDB5 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		998947FF232E4E9600D54366 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		99894802232E529A00D54366 /* DatabaseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerTests.swift; sourceTree = "<group>"; };
+		99894804232E634200D54366 /* StationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDataManager.swift; sourceTree = "<group>"; };
+		99894806232E64FB00D54366 /* StationDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDataManagerTests.swift; sourceTree = "<group>"; };
+		99894808232E659A00D54366 /* CoreDataTestStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestStack.swift; sourceTree = "<group>"; };
 		99B638E1223D69CC004751D8 /* TrainAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainAPIEndpoints.swift; sourceTree = "<group>"; };
 		99B638E4223D6C57004751D8 /* TimeTableItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableItem.swift; sourceTree = "<group>"; };
 		99B638EF223DB2C1004751D8 /* TimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -134,8 +140,8 @@
 		993F8C5121EA72DD00FE744C /* Train-AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				99894801232E528600D54366 /* Data */,
 				993F8C5221EA72DD00FE744C /* Train_AppTests.swift */,
+				99894801232E528600D54366 /* Data */,
 				993F8C5421EA72DD00FE744C /* Info.plist */,
 			);
 			path = "Train-AppTests";
@@ -152,8 +158,9 @@
 		998947FE232E4E7300D54366 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				998947FF232E4E9600D54366 /* DatabaseManager.swift */,
 				993F8C4121EA72DC00FE744C /* Train_App.xcdatamodeld */,
+				998947FF232E4E9600D54366 /* DatabaseManager.swift */,
+				99894804232E634200D54366 /* StationDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -162,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				99894802232E529A00D54366 /* DatabaseManagerTests.swift */,
+				99894806232E64FB00D54366 /* StationDataManagerTests.swift */,
+				99894808232E659A00D54366 /* CoreDataTestStack.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -322,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99894800232E4E9600D54366 /* DatabaseManager.swift in Sources */,
+				99894805232E634200D54366 /* StationDataManager.swift in Sources */,
 				99B638F1223DB2C1004751D8 /* TimeTableViewCell.swift in Sources */,
 				995E31BA22E3A638001BDDB5 /* SearchViewController.swift in Sources */,
 				995E31AD22E39ABF001BDDB5 /* StationNameViewCell.swift in Sources */,
@@ -344,8 +354,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99894807232E64FB00D54366 /* StationDataManagerTests.swift in Sources */,
 				99894803232E529A00D54366 /* DatabaseManagerTests.swift in Sources */,
 				993F8C5321EA72DD00FE744C /* Train_AppTests.swift in Sources */,
+				99894809232E659A00D54366 /* CoreDataTestStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

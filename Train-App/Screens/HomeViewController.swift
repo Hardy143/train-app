@@ -9,10 +9,10 @@
 import UIKit
 
 class HomeViewController: UIViewController, SearchDelegate {
-    
+
     @IBOutlet weak var tableView: UITableView!
     
-    var stations: [Station] = []
+    var stations: [StationDB] = []
     var chosenStation: Station?
     
     override func viewDidLoad() {
@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, SearchDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        stations = StationDataManager().fetchAllStations()
         tableView.reloadData()
     }
     
@@ -40,8 +41,8 @@ class HomeViewController: UIViewController, SearchDelegate {
     @IBAction func deleteButtonPressed(_ sender: Any) {
     }
     
-    func updateDepartureStations(withStation: Station) {
-        stations.append(withStation)
+    func updateDepartureStations(withStation: StationDB) {
+        stations = StationDataManager().fetchAllStations()
         tableView.reloadData()
     }
     
@@ -79,7 +80,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenStation = Station(name: stations[indexPath.row].name)
+        chosenStation = Station(name: stations[indexPath.row].name ?? "")
         performSegue(withIdentifier: "showDepartureInfo", sender: nil)
     }
     

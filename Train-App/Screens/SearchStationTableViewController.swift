@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchDelegate: class {
-    func updateDepartureStations(withStation: Station)
+    func updateDepartureStations(withStation: StationDB)
 }
 
 class SearchStationTableViewController: UITableViewController {
@@ -92,8 +92,14 @@ class SearchStationTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchController.isActive {
             chosenStation = Station(name: filteredData[indexPath.row])
+            if let chosenStation = chosenStation {
+                StationDataManager().createStation(name: chosenStation.name)
+            }
         } else {
             chosenStation = Station(name: stations[indexPath.row])
+            if let chosenStation = chosenStation {
+                StationDataManager().createStation(name: chosenStation.name)
+            }
         }
         
         performSegue(withIdentifier: "showDepartureInfo", sender: nil)
