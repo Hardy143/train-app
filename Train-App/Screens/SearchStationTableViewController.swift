@@ -16,7 +16,7 @@ class SearchStationTableViewController: UITableViewController {
 
     var stations: [String] = []
     var filteredData: [String] = []
-    var chosenStation: Station?
+    var chosenStation: StationViewModel?
     var searchController: UISearchController!
     weak var delegate: SearchDelegate?
 
@@ -49,7 +49,6 @@ class SearchStationTableViewController: UITableViewController {
         searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         searchController.searchBar.isUserInteractionEnabled = true
-        searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.barTintColor = .slateGray
         searchController.searchBar.showsCancelButton = true
@@ -91,9 +90,11 @@ class SearchStationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchController.isActive {
-            chosenStation = Station(name: filteredData[indexPath.row])
+            chosenStation = StationViewModel(name: filteredData[indexPath.row])
+            chosenStation?.addNewStation()
         } else {
-            chosenStation = Station(name: stations[indexPath.row])
+            chosenStation = StationViewModel(name: stations[indexPath.row])
+            chosenStation?.addNewStation()
         }
         
         performSegue(withIdentifier: "showDepartureInfo", sender: nil)

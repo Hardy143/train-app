@@ -24,6 +24,7 @@ class HomeViewController: UIViewController, SearchDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        stations = StationDataManager().fetchAllStations()
         tableView.reloadData()
     }
     
@@ -79,7 +80,7 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenStation = Station(name: stations[indexPath.row].name)
+        //chosenStation = Station(name: stations[indexPath.row].name)
         performSegue(withIdentifier: "showDepartureInfo", sender: nil)
     }
     
