@@ -18,7 +18,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stationListViewModel = StationListViewModel()
         stations = stationListViewModel.stations
         registerTableViewCells()
         tableView.reloadData()
@@ -49,11 +48,6 @@ class HomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSearch" {
-            let popoverViewController = segue.destination as! SearchStationTableViewController
-            //popoverViewController.delegate = self
-        }
-        
         if segue.identifier == "showDeparture" {
             let viewController = segue.destination as! DeparturesViewController
             if let station = chosenStation {

@@ -12,7 +12,7 @@ class SearchStationTableViewController: UITableViewController {
 
     var stations: [StationViewModel] = []
     var stationListViewModel = StationListViewModel()
-    var filteredData: [String] = []
+    var filteredData: [StationViewModel] = []
     var chosenStation: StationViewModel?
     var searchController: UISearchController!
 
@@ -76,7 +76,7 @@ class SearchStationTableViewController: UITableViewController {
         cell.selectionStyle = .none
         
         if searchController.isActive {
-            cell.trainStationName.text = filteredData[indexPath.row]
+            cell.trainStationName.text = filteredData[indexPath.row].name
             return cell
         }
         
@@ -87,7 +87,7 @@ class SearchStationTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if searchController.isActive {
-            chosenStation = StationViewModel(name: filteredData[indexPath.row])
+            chosenStation = StationViewModel(name: filteredData[indexPath.row].name)
             chosenStation?.addNewStation()
         } else {
             chosenStation = StationViewModel(name: stations[indexPath.row].name)
@@ -111,23 +111,12 @@ extension SearchStationTableViewController: UISearchResultsUpdating, UISearchBar
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            let filterableStations = convertStationsToArrayOfString()
-            filteredData = searchText.isEmpty ? filterableStations : filterableStations.filter({ (dataString: String) -> Bool in
-                return dataString.range(of: searchText, options: .caseInsensitive) != nil
-            })
+            filteredData = searchText.isEmpty ? stations : stations.filter({$0.name.range(of: searchText, options: .caseInsensitive) != nil})
             tableView.reloadData()
         }
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
-    }
-    
-    private func convertStationsToArrayOfString() -> [String] {
-        var filterableStations: [String] = []
-        for station in stations {
-            filterableStations.append(station.name)
-        }
-        return filterableStations
     }
 }

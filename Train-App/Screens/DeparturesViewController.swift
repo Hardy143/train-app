@@ -12,11 +12,9 @@ class DeparturesViewController: UIViewController {
     
     @IBOutlet weak var stationTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     var timeTableCollection: TimeTableCollectionViewModel?
     var stationName: String!
-    let parser = Parser()
-    
-    var timeTableItems: [TimeTableItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +23,11 @@ class DeparturesViewController: UIViewController {
         registerTableViewCells()
         
         timeTableCollection = TimeTableCollectionViewModel(apiUrl: stationName)
-        timeTableCollection?.parseUrl(completion: { (timeTableData) in
-            self.timeTableItems = timeTableData
-        })
-        
-        let apiURL = TrainAPIEndpoints.getAPI(stationName: stationName)
-        parser.parse(url: apiURL) { timeTableData in
-            self.timeTableItems = timeTableData
-            print(self.timeTableItems)
+        timeTableCollection?.parseUrl(completion: { _ in
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-        }
-
+        })
     }
     
     func configureTableView() {
@@ -59,36 +49,39 @@ class DeparturesViewController: UIViewController {
 extension DeparturesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return timeTableItems.count
+        if let timeTableItems = timeTableCollection?.timeTableItems {
+            return timeTableItems.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TimeTableViewCell
         cell.selectionStyle = .none
-        let departTime = formatDate(dateString: timeTableItems[indexPath.row].departTime)
-        cell.destinationNameLabel.text = timeTableItems[indexPath.row].destination
-        cell.departTimeLabel.text = departTime
-        cell.platformNoLabel.text = timeTableItems[indexPath.row].platform
+        if let timeTableItems = timeTableCollection?.timeTableItems {
+            let timeTableItemViewModel = createTimeTableItemViewModel(destination: timeTableItems[indexPath.row].destination,
+                                                                  departTime: timeTableItems[indexPath.row].departTime,
+                                                                  platform: timeTableItems[indexPath.row].platform)
+            cell.destinationNameLabel.text = timeTableItemViewModel.destination
+            cell.departTimeLabel.text = timeTableItemViewModel.departTime
+            cell.platformNoLabel.text = timeTableItemViewModel.platform
+        }
+
         return cell
     }
     
-    
 }
 
-// MARK: - Date formatting
+// MARK: - Private methods
 extension DeparturesViewController {
     
-    func formatDate(dateString: String) -> String {
-    
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyyMMddHHmmss"
-    
-        let dateFomatterConvert = DateFormatter()
-        dateFomatterConvert.dateFormat = "h:mm a"
-        
-        if let date = dateFormatterGet.date(from: dateString) {
-            return dateFomatterConvert.string(from: date)
-        }
-        return ""
+    private func createTimeTableItemViewModel(destination: String,
+                                              departTime: String,
+                                              platform: String) -> TimeTableItemViewModel {
+        let timeTableItem = TimeTableItem(destination: destination,
+                                          departTime: departTime,
+                                          platform: platform)
+        return TimeTableItemViewModel(timeTableItem: timeTableItem)
     }
+    
 }
