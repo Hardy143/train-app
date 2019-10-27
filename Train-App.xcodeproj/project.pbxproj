@@ -28,6 +28,9 @@
 		99B638F2223DB2C1004751D8 /* TimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99B638F0223DB2C1004751D8 /* TimeTableViewCell.xib */; };
 		99BBA64E2364AD10000773F5 /* StationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBA64D2364AD10000773F5 /* StationDataManager.swift */; };
 		99BBA6512364B259000773F5 /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBA6502364B259000773F5 /* StationViewModel.swift */; };
+		99BBA6532365B4D4000773F5 /* StationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBA6522365B4D4000773F5 /* StationListViewModel.swift */; };
+		99BBA6552365C43E000773F5 /* RemoteStationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBA6542365C43E000773F5 /* RemoteStationListViewModel.swift */; };
+		99BBA6592365C4D0000773F5 /* RemoteStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BBA6582365C4D0000773F5 /* RemoteStation.swift */; };
 		99D0BE432306D8A8001429D1 /* SearchStationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE422306D8A8001429D1 /* SearchStationTableViewController.swift */; };
 		99D0BE46230714FA001429D1 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE45230714FA001429D1 /* UIColor+Extension.swift */; };
 		99D0BE4B23072670001429D1 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0BE4A23072670001429D1 /* JsonParser.swift */; };
@@ -70,6 +73,9 @@
 		99B638F0223DB2C1004751D8 /* TimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeTableViewCell.xib; sourceTree = "<group>"; };
 		99BBA64D2364AD10000773F5 /* StationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDataManager.swift; sourceTree = "<group>"; };
 		99BBA6502364B259000773F5 /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
+		99BBA6522365B4D4000773F5 /* StationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListViewModel.swift; sourceTree = "<group>"; };
+		99BBA6542365C43E000773F5 /* RemoteStationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStationListViewModel.swift; sourceTree = "<group>"; };
+		99BBA6582365C4D0000773F5 /* RemoteStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteStation.swift; sourceTree = "<group>"; };
 		99D0BE422306D8A8001429D1 /* SearchStationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStationTableViewController.swift; sourceTree = "<group>"; };
 		99D0BE45230714FA001429D1 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		99D0BE4A23072670001429D1 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				99BBA6502364B259000773F5 /* StationViewModel.swift */,
+				99BBA6522365B4D4000773F5 /* StationListViewModel.swift */,
+				99BBA6542365C43E000773F5 /* RemoteStationListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -222,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				99B638E4223D6C57004751D8 /* TimeTableItem.swift */,
+				99BBA6582365C4D0000773F5 /* RemoteStation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -338,6 +347,7 @@
 				995E31AD22E39ABF001BDDB5 /* StationNameViewCell.swift in Sources */,
 				993F8C5E21EA782A00FE744C /* Parser.swift in Sources */,
 				99D0BE432306D8A8001429D1 /* SearchStationTableViewController.swift in Sources */,
+				99BBA6592365C4D0000773F5 /* RemoteStation.swift in Sources */,
 				99B638E5223D6C57004751D8 /* TimeTableItem.swift in Sources */,
 				993F8C4321EA72DC00FE744C /* Train_App.xcdatamodeld in Sources */,
 				993F8C3D21EA72DC00FE744C /* HomeViewController.swift in Sources */,
@@ -346,7 +356,9 @@
 				99D0BE46230714FA001429D1 /* UIColor+Extension.swift in Sources */,
 				99BBA6512364B259000773F5 /* StationViewModel.swift in Sources */,
 				99D0BE4D23086768001429D1 /* DeparturesViewController.swift in Sources */,
+				99BBA6552365C43E000773F5 /* RemoteStationListViewModel.swift in Sources */,
 				995E31B322E39BA7001BDDB5 /* UIView + Extension.swift in Sources */,
+				99BBA6532365B4D4000773F5 /* StationListViewModel.swift in Sources */,
 				99D0BE4B23072670001429D1 /* JsonParser.swift in Sources */,
 				99B638E2223D69CC004751D8 /* TrainAPIEndpoints.swift in Sources */,
 			);
@@ -515,7 +527,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J29DW6G5ZA;
 				INFOPLIST_FILE = "Train-App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -536,7 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J29DW6G5ZA;
 				INFOPLIST_FILE = "Train-App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

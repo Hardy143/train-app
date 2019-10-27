@@ -8,24 +8,20 @@
 
 import UIKit
 
-protocol SearchDelegate: class {
-    func updateDepartureStations(withStation: Station)
-}
-
 class SearchStationTableViewController: UITableViewController {
 
-    var stations: [String] = []
+    var stations: [RemoteStation] = []
+    var remoteStationListViewModel = RemoteStationListViewModel()
     var filteredData: [String] = []
     var chosenStation: StationViewModel?
     var searchController: UISearchController!
-    weak var delegate: SearchDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         registerTableViewCells()
         configureTableView()
         createSearchBar()
-        JsonParser().fetchRailwayStationsFromAPI { (stations) in
+        remoteStationListViewModel.getStations { (stations) in
             self.stations = stations
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -49,6 +45,7 @@ class SearchStationTableViewController: UITableViewController {
         searchController.searchBar.delegate = self
         self.definesPresentationContext = true
         searchController.searchBar.isUserInteractionEnabled = true
+        searchController.dimsBackgroundDuringPresentation = false
         tableView.tableHeaderView = searchController.searchBar
         searchController.searchBar.barTintColor = .slateGray
         searchController.searchBar.showsCancelButton = true
@@ -83,7 +80,7 @@ class SearchStationTableViewController: UITableViewController {
             return cell
         }
         
-        cell.trainStationName.text = stations[indexPath.row]
+        cell.trainStationName.text = stations[indexPath.row].name
         cell.selectionStyle = .none
         return cell
     }
@@ -93,7 +90,7 @@ class SearchStationTableViewController: UITableViewController {
             chosenStation = StationViewModel(name: filteredData[indexPath.row])
             chosenStation?.addNewStation()
         } else {
-            chosenStation = StationViewModel(name: stations[indexPath.row])
+            chosenStation = StationViewModel(name: stations[indexPath.row].name)
             chosenStation?.addNewStation()
         }
         
@@ -102,7 +99,7 @@ class SearchStationTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDepartureInfo" {
-            let viewController = segue.destination as! DeparturesViewController
+            guard let viewController = segue.destination as? DeparturesViewController else  { return }
             if let station = chosenStation {
                 viewController.stationName = station.name
             }
@@ -114,7 +111,8 @@ extension SearchStationTableViewController: UISearchResultsUpdating, UISearchBar
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            filteredData = searchText.isEmpty ? stations : stations.filter({ (dataString: String) -> Bool in
+            let filterableStations = convertStationsToArrayOfString()
+            filteredData = searchText.isEmpty ? filterableStations : filterableStations.filter({ (dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: .caseInsensitive) != nil
             })
             tableView.reloadData()
@@ -123,5 +121,13 @@ extension SearchStationTableViewController: UISearchResultsUpdating, UISearchBar
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func convertStationsToArrayOfString() -> [String] {
+        var filterableStations: [String] = []
+        for station in stations {
+            filterableStations.append(station.name)
+        }
+        return filterableStations
     }
 }

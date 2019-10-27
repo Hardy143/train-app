@@ -8,23 +8,25 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, SearchDelegate {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var stations: [Station] = []
-    var chosenStation: Station?
+    var stationListViewModel: StationListViewModel = StationListViewModel()
+    var stations: [StationViewModel] = []
+    var chosenStation: StationViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        stationListViewModel = StationListViewModel()
+        stations = stationListViewModel.stations
         registerTableViewCells()
         tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stations = StationDataManager().fetchAllStations()
+        stations = stationListViewModel.stations
         tableView.reloadData()
     }
     
@@ -42,17 +44,17 @@ class HomeViewController: UIViewController, SearchDelegate {
     }
     
     func updateDepartureStations(withStation: Station) {
-        stations.append(withStation)
+        stations = stationListViewModel.stations
         tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSearch" {
             let popoverViewController = segue.destination as! SearchStationTableViewController
-            popoverViewController.delegate = self
+            //popoverViewController.delegate = self
         }
         
-        if segue.identifier == "showDepartureInfo" {
+        if segue.identifier == "showDeparture" {
             let viewController = segue.destination as! DeparturesViewController
             if let station = chosenStation {
                 viewController.stationName = station.name
@@ -65,7 +67,7 @@ class HomeViewController: UIViewController, SearchDelegate {
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stations.count
+        return stationListViewModel.stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,8 +82,8 @@ extension HomeViewController: UITableViewDelegate {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //chosenStation = Station(name: stations[indexPath.row].name)
-        performSegue(withIdentifier: "showDepartureInfo", sender: nil)
+        chosenStation = StationViewModel(name: stations[indexPath.row].name)
+        performSegue(withIdentifier: "showDeparture", sender: nil)
     }
     
 }

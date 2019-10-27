@@ -11,7 +11,7 @@ import Foundation
 class StationViewModel {
     
     let name: String
-    let stationDataManager: StationDataManager
+    private let stationDataManager: StationDataManager
     
     init(name: String, stationDataManager: StationDataManager = StationDataManager()) {
         self.name = name
@@ -19,6 +19,15 @@ class StationViewModel {
     }
     
     func addNewStation() {
-        stationDataManager.createStation(name: self.name)
+        if !isStationAlreadyAdded() {
+            stationDataManager.createStation(name: self.name)
+        }
+    }
+    
+    private func isStationAlreadyAdded() -> Bool {
+        if stationDataManager.fetchStationByName(name: name) != nil {
+            return true
+        }
+        return false
     }
 }

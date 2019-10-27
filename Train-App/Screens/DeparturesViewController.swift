@@ -44,12 +44,10 @@ class DeparturesViewController: UIViewController {
         tableView.register(customCell.self, forCellReuseIdentifier: "cell")
     }
     
-    
     @IBAction func backButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "returnHome", sender: nil)
     }
-
+    
 }
 
 extension DeparturesViewController: UITableViewDataSource, UITableViewDelegate {
