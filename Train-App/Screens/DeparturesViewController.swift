@@ -12,6 +12,7 @@ class DeparturesViewController: UIViewController {
     
     @IBOutlet weak var stationTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    var timeTableCollection: TimeTableCollectionViewModel?
     var stationName: String!
     let parser = Parser()
     
@@ -22,6 +23,11 @@ class DeparturesViewController: UIViewController {
         stationTitle.text = stationName
         configureTableView()
         registerTableViewCells()
+        
+        timeTableCollection = TimeTableCollectionViewModel(apiUrl: stationName)
+        timeTableCollection?.parseUrl(completion: { (timeTableData) in
+            self.timeTableItems = timeTableData
+        })
         
         let apiURL = TrainAPIEndpoints.getAPI(stationName: stationName)
         parser.parse(url: apiURL) { timeTableData in

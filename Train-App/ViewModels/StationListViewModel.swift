@@ -11,14 +11,33 @@ import Foundation
 class StationListViewModel {
     
     private let stationDataManager: StationDataManager
+    private let jsonParser: JsonParser
     
-    init(stationDataManager: StationDataManager = StationDataManager()) {
+    init(stationDataManager: StationDataManager = StationDataManager(), jsonParser: JsonParser = JsonParser()) {
         self.stationDataManager = stationDataManager
+        self.jsonParser = jsonParser
     }
     
     var stations: [StationViewModel] {
         return getListOfStations()
     }
+    
+    func getStations(completion: @escaping ([StationViewModel]) -> Void) {
+        jsonParser.fetchRailwayStationsFromAPI { (names) in
+            var stations: [StationViewModel] = []
+            
+            for name in names {
+                let station = StationViewModel(name: name)
+                stations.append(station)
+            }
+            
+            completion(stations)
+        }
+    }
+}
+
+// MARK: - Private methods
+extension StationListViewModel {
     
     private func getListOfStations() -> [StationViewModel] {
         var stations: [StationViewModel] = []

@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct RemoteStation {
+struct StationModel {
     let name: String
 }

@@ -10,8 +10,8 @@ import UIKit
 
 class SearchStationTableViewController: UITableViewController {
 
-    var stations: [RemoteStation] = []
-    var remoteStationListViewModel = RemoteStationListViewModel()
+    var stations: [StationViewModel] = []
+    var stationListViewModel = StationListViewModel()
     var filteredData: [String] = []
     var chosenStation: StationViewModel?
     var searchController: UISearchController!
@@ -21,7 +21,7 @@ class SearchStationTableViewController: UITableViewController {
         registerTableViewCells()
         configureTableView()
         createSearchBar()
-        remoteStationListViewModel.getStations { (stations) in
+        stationListViewModel.getStations { (stations) in
             self.stations = stations
             DispatchQueue.main.async {
                 self.tableView.reloadData()
