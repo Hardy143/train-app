@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +11,9 @@
         <!--Departures View Controller-->
         <scene sceneID="Izh-X8-RSe">
             <objects>
-                <viewController id="a6W-oc-7cl" customClass="DeparturesViewController" customModule="Train_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="a6W-oc-7cl" customClass="DeparturesViewController" customModule="Train_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gVr-fW-B2o">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gfk-Tm-bIT" userLabel="Top View">
@@ -49,7 +49,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3cl-FT-QnZ">
-                                <rect key="frame" x="0.0" y="100" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="vQa-D6-YCz">
@@ -67,6 +67,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="UZi-A3-WCZ"/>
                         <color key="backgroundColor" red="0.19224300980567932" green="0.19168281555175781" blue="0.21961185336112976" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="gfk-Tm-bIT" secondAttribute="trailing" id="CN0-l2-5jN"/>
@@ -77,7 +78,6 @@
                             <constraint firstItem="gfk-Tm-bIT" firstAttribute="top" secondItem="gVr-fW-B2o" secondAttribute="top" id="qEJ-Qh-0f4"/>
                             <constraint firstAttribute="bottomMargin" secondItem="3cl-FT-QnZ" secondAttribute="bottom" id="xtX-Uo-j1I"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="UZi-A3-WCZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="1jb-tB-IN4"/>
                     <connections>
@@ -92,9 +92,9 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Train_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Train_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0b-FK-sJN" userLabel="Top View">
@@ -143,7 +143,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-1A-5wE">
-                                <rect key="frame" x="0.0" y="100" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" red="0.1647058824" green="0.16078431369999999" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -162,6 +162,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.19224300980567932" green="0.19168281555175781" blue="0.21961185336112976" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.19224300980567932" green="0.19168281555175781" blue="0.21961185336112976" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -173,7 +174,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dcS-1A-5wE" secondAttribute="trailing" id="wys-Dd-dw2"/>
                             <constraint firstItem="dcS-1A-5wE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="y5U-dP-vfj"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9DU-Vy-9we"/>
@@ -191,9 +191,9 @@
         <!--Search Station Table View Controller-->
         <scene sceneID="7rr-wt-C06">
             <objects>
-                <tableViewController id="Y8S-Mv-agv" customClass="SearchStationTableViewController" customModule="Train_App" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="fullScreen" id="Y8S-Mv-agv" customClass="SearchStationTableViewController" customModule="Train_App" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UDN-07-6Ql">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.19224300980567932" green="0.19168281555175781" blue="0.21961185336112976" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <color key="tintColor" red="0.1922430098" green="0.1916828156" blue="0.2196118534" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -222,12 +222,12 @@
             <point key="canvasLocation" x="945" y="133"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="UG5-4h-KhP"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="icons8-go-back-90" width="90" height="90"/>
         <image name="icons8-minus-90 (1)" width="90" height="90"/>
         <image name="icons8-plus-90" width="90" height="90"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2bu-Yk-epv"/>
-    </inferredMetricsTieBreakers>
 </document>

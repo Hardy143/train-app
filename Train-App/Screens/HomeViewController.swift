@@ -78,6 +78,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         chosenStation = StationViewModel(name: stations[indexPath.row].name)
         performSegue(withIdentifier: "showDeparture", sender: nil)
+
     }
     
 }
