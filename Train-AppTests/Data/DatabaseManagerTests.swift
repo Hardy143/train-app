@@ -58,7 +58,15 @@ extension DatabaseManagerTests {
         }
         
         waitForExpectations(timeout: 1.0) { _ in
-           // self.sut.persistentContainer.persistentStoreCoordinator.destroyPersistentStore(type: NSSQLiteStoreType)
+            guard let storeUrl = self.sut.persistentContainer.persistentStoreCoordinator.persistentStores.first?.url else {
+                print("Missing store url")
+                return
+            }
+            do {
+                try self.sut.persistentContainer.persistentStoreCoordinator.destroyPersistentStore(at: storeUrl, ofType: NSSQLiteStoreType, options: nil)
+            } catch {
+                print("Unable to destroy persistent store")
+            }
             
         }
     }
@@ -75,7 +83,7 @@ extension DatabaseManagerTests {
     }
 }
 
-// MARk: - Context tests
+// MARK: - Context tests
 extension DatabaseManagerTests {
     
     func testBackgroundContext_concurrencyType() {

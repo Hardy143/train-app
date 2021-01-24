@@ -9,13 +9,13 @@
 import CoreData
 
 class StationDataManager {
+
+    private let mainContext: NSManagedObjectContext
+    private let backgroundContext: NSManagedObjectContext
     
-    let backgroundContext: NSManagedObjectContext
-    let mainContext: NSManagedObjectContext
-    
-    init(backgroundContext: NSManagedObjectContext = DatabaseManager.shared.backgroundContext, mainContext: NSManagedObjectContext = DatabaseManager.shared.mainContext) {
-        self.backgroundContext = backgroundContext
+    init(mainContext: NSManagedObjectContext = DatabaseManager.shared.mainContext, backgroundContext: NSManagedObjectContext = DatabaseManager.shared.backgroundContext) {
         self.mainContext = mainContext
+        self.backgroundContext = backgroundContext
     }
     
     func createStation(name: String) {

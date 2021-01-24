@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9927D21725BE0D3E00A3E0A6 /* StationDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927D21625BE0D3E00A3E0A6 /* StationDataManagerTests.swift */; };
+		9927D21D25BE0DD100A3E0A6 /* MockDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927D21C25BE0DD100A3E0A6 /* MockDatabaseManager.swift */; };
 		993F8C3B21EA72DC00FE744C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F8C3A21EA72DC00FE744C /* AppDelegate.swift */; };
 		993F8C3D21EA72DC00FE744C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993F8C3C21EA72DC00FE744C /* HomeViewController.swift */; };
 		993F8C4021EA72DC00FE744C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 993F8C3E21EA72DC00FE744C /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9927D21625BE0D3E00A3E0A6 /* StationDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDataManagerTests.swift; sourceTree = "<group>"; };
+		9927D21C25BE0DD100A3E0A6 /* MockDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseManager.swift; sourceTree = "<group>"; };
 		993F8C3721EA72DC00FE744C /* Train-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Train-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		993F8C3A21EA72DC00FE744C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		993F8C3C21EA72DC00FE744C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9927D22425BE119D00A3E0A6 /* Mock Setup */ = {
+			isa = PBXGroup;
+			children = (
+				9927D21C25BE0DD100A3E0A6 /* MockDatabaseManager.swift */,
+			);
+			path = "Mock Setup";
+			sourceTree = "<group>";
+		};
 		993F8C2E21EA72DB00FE744C = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				998947FE232E4E7300D54366 /* Data */,
-				99D0BE44230714D9001429D1 /* Extensions */,
 				99D0BE3B2306D777001429D1 /* Screens */,
 				995E31B122E39B93001BDDB5 /* Extensions */,
 				99DC5EEA22E362EF00803D56 /* Models */,
@@ -153,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				995E31B222E39BA7001BDDB5 /* UIView + Extension.swift */,
+				99D0BE45230714FA001429D1 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -161,8 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				998947FF232E4E9600D54366 /* DatabaseManager.swift */,
-				993F8C4121EA72DC00FE744C /* Train_App.xcdatamodeld */,
 				99BBA64D2364AD10000773F5 /* StationDataManager.swift */,
+				993F8C4121EA72DC00FE744C /* Train_App.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -170,7 +182,9 @@
 		99894801232E528600D54366 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				9927D22425BE119D00A3E0A6 /* Mock Setup */,
 				99894802232E529A00D54366 /* DatabaseManagerTests.swift */,
+				9927D21625BE0D3E00A3E0A6 /* StationDataManagerTests.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -215,15 +229,6 @@
 				99D0BE4C23086768001429D1 /* DeparturesViewController.swift */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		99D0BE44230714D9001429D1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				99D0BE45230714FA001429D1 /* UIColor+Extension.swift */,
-			);
-			name = Extensions;
-			path = ../Extensions;
 			sourceTree = "<group>";
 		};
 		99DC5EEA22E362EF00803D56 /* Models */ = {
@@ -368,7 +373,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9927D21725BE0D3E00A3E0A6 /* StationDataManagerTests.swift in Sources */,
 				99894803232E529A00D54366 /* DatabaseManagerTests.swift in Sources */,
+				9927D21D25BE0DD100A3E0A6 /* MockDatabaseManager.swift in Sources */,
 				993F8C5321EA72DD00FE744C /* Train_AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -571,6 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J29DW6G5ZA;
 				INFOPLIST_FILE = "Train-AppTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,6 +600,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J29DW6G5ZA;
 				INFOPLIST_FILE = "Train-AppTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
