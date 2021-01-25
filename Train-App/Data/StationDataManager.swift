@@ -23,7 +23,7 @@ class StationDataManager {
             let station = NSEntityDescription.insertNewObject(forEntityName: Station.description(), into: backgroundContext) as! Station
             station.name = name
             
-            try? backgroundContext.save()
+            save(to: backgroundContext)
         }
     }
     
@@ -33,7 +33,7 @@ class StationDataManager {
             if let stationInContext = try? backgroundContext.existingObject(with: objectID) {
                 backgroundContext.delete(stationInContext)
                 
-                try? backgroundContext.save()
+                save(to: backgroundContext)
             }
         }
     }
@@ -62,4 +62,18 @@ class StationDataManager {
         
         return nil
     }
+}
+
+// MARK: - Private methods
+
+extension StationDataManager {
+    
+    private func save(to context: NSManagedObjectContext) {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving")
+        }
+    }
+    
 }

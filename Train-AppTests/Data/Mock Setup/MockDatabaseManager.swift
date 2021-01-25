@@ -28,13 +28,24 @@ class MockDatabaseManager {
             
         }
         
-        mainContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        mainContext.automaticallyMergesChangesFromParent = true
-        mainContext.persistentStoreCoordinator = persistentContainer.persistentStoreCoordinator
-        
-        backgroundContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        backgroundContext = self.persistentContainer.newBackgroundContext()
         backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        backgroundContext.parent = self.mainContext
+        
+        mainContext = self.persistentContainer.viewContext
+        mainContext.automaticallyMergesChangesFromParent = true
+        
+    }
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }
 
