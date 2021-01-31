@@ -58,11 +58,9 @@ extension StationDataManagerTests {
     
     func test_createStation_SaveIsCalled() {
         // Given
-        expectation(
-            forNotification: .NSManagedObjectContextDidSave,
-            object: mockDatabaseManager.backgroundContext) { _ in
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: mockDatabaseManager.backgroundContext) { _ in
               return true
-          }
+        }
         
         // When
         sut.createStation(name: "TestStation")

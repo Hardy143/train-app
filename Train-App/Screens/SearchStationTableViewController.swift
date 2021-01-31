@@ -97,14 +97,6 @@ class SearchStationTableViewController: UITableViewController {
         performSegue(withIdentifier: "showDepartureInfo", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDepartureInfo" {
-            guard let viewController = segue.destination as? DeparturesViewController else  { return }
-            if let station = chosenStation {
-                viewController.stationName = station.name
-            }
-        }
-    }
 }
 
 extension SearchStationTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
@@ -119,4 +111,18 @@ extension SearchStationTableViewController: UISearchResultsUpdating, UISearchBar
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+// MARK: - Navigation
+extension SearchStationTableViewController {
+ 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDepartureInfo" {
+            guard let viewController = segue.destination as? DeparturesViewController else  { return }
+            if let station = chosenStation {
+                viewController.stationName = station.name
+            }
+        }
+    }
+    
 }

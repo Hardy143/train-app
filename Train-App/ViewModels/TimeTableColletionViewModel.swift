@@ -10,18 +10,22 @@ import Foundation
 
 class TimeTableCollectionViewModel {
     
-    private let apiUrl: String
-    private let parser: Parser
+    private let parser: ParserXML
     var timeTableItems: [TimeTableItem] = []
     
-    init(apiUrl: String, parser: Parser = Parser()) {
-        self.apiUrl = apiUrl
+    private let stationName: String
+    
+    init(stationName: String, parser: ParserXML = ParserXML()) {
+        self.stationName = stationName
         self.parser = parser
     }
     
+    var apiUrl: String {
+        return TrainAPIEndpoints.getAPI(stationName: self.stationName)
+    }
+    
     func parseUrl(completion: @escaping ([TimeTableItem]) -> Void) {
-        let url = TrainAPIEndpoints.getAPI(stationName: apiUrl)
-        parser.parse(url: url) { timeTableData in
+        parser.parse(url: apiUrl) { timeTableData in
             self.timeTableItems = timeTableData
             completion(timeTableData)
         }

@@ -7,8 +7,43 @@
 //
 
 import Foundation
+
+class JsonParser {
+    
+    private let endpoint: String
+    
+    init(endpoint: String = TrainAPIEndpoints.allStations) {
+        self.endpoint = endpoint
+    }
+    
+    func fetchRailwayStationsFromAPI(completion: @escaping ([String]) -> Void) {
+        guard let railwayURL = URL(string: endpoint) else { return }
+        URLSession.shared.dataTask(with: railwayURL) { (data, response, error) in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                let railwayData = try decoder.decode(NorthernIrelandStations.self, from: data)
+                let stations = railwayData.result.records
+                let stationNames = self.getStationNames(stationNames: stations)
+                completion(stationNames)
+            } catch {
+                print("error: \(error)")
+            }
+        }.resume()
+    }
+    
+    private func getStationNames(stationNames: [Record]) -> [String] {
+        var names: [String] = []
+        for station in stationNames {
+            names.append(station.name)
+        }
+        return names
+    }
+    
+}
+
 // MARK: - Welcome
-struct Welcome: Codable {
+struct NorthernIrelandStations: Codable {
     let help: String
     let success: Bool
     let result: Result
@@ -79,32 +114,4 @@ enum PublicTra: String, Codable {
 enum Operator: String, Codable {
     case irishRail = "Irish Rail"
     case translinkNIRailways = "Translink NI Railways"
-}
-
-class JsonParser {
-    
-    func fetchRailwayStationsFromAPI(completion: @escaping ([String]) -> Void) {
-        guard let railwayURL = URL(string: TrainAPIEndpoints.allStations) else { return }
-        URLSession.shared.dataTask(with: railwayURL) { (data, response, error) in
-            guard let data = data else { return }
-            do {
-                let decoder = JSONDecoder()
-                let railwayData = try decoder.decode(Welcome.self, from: data)
-                let stations = railwayData.result.records
-                let stationNames = self.getStationNames(stationNames: stations)
-                completion(stationNames)
-            } catch {
-                print("error: \(error)")
-            }
-        }.resume()
-    }
-    
-    private func getStationNames(stationNames: [Record]) -> [String] {
-        var names: [String] = []
-        for station in stationNames {
-            names.append(station.name)
-        }
-        return names
-    }
-    
 }

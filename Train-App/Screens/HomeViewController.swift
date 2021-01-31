@@ -47,15 +47,6 @@ class HomeViewController: UIViewController {
         tableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDeparture" {
-            let viewController = segue.destination as! DeparturesViewController
-            if let station = chosenStation {
-                viewController.stationName = station.name
-            }
-        }
-    }
-    
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -79,6 +70,21 @@ extension HomeViewController: UITableViewDataSource {
         chosenStation = StationViewModel(name: stations[indexPath.row].name)
         performSegue(withIdentifier: "showDeparture", sender: nil)
 
+    }
+    
+}
+
+// MARK: - Navigation
+
+extension HomeViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDeparture" {
+            let viewController = segue.destination as! DeparturesViewController
+            if let station = chosenStation {
+                viewController.stationName = station.name
+            }
+        }
     }
     
 }
