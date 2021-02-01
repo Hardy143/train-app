@@ -13,6 +13,7 @@ class ParserXMLTests: XCTestCase {
     
     var sut: ParserXML!
     let mockURL = "https://run.mocky.io/v3/dad20db2-d79f-4a43-b725-522e2feb868d"
+    let deleteMockURLLink = "https://designer.mocky.io/manage/delete/dad20db2-d79f-4a43-b725-522e2feb868d/UpqVi2d8tClQpWHX3gcfx56l5AJiYfKgY7ZF"
     var timeTableItems: [TimeTableItem] = []
 
     override func setUpWithError() throws {
@@ -32,6 +33,7 @@ class ParserXMLTests: XCTestCase {
         
         // When
         sut.parse(url: mockURL) { timeTableItems in
+            guard let timeTableItems = timeTableItems as? [TimeTableItem] else { return }
             actual = timeTableItems
             expection.fulfill()
         }
@@ -52,7 +54,8 @@ class ParserXMLTests: XCTestCase {
         
         // When
         sut.parse(url: mockURL) { timeTableItems in
-            self.timeTableItems = timeTableItems
+            guard let result = timeTableItems as? [TimeTableItem] else { return }
+            self.timeTableItems = result
             expection.fulfill()
         }
         
@@ -78,7 +81,8 @@ class ParserXMLTests: XCTestCase {
         
         // When
         sut.parse(url: mockURL) { timeTableItems in
-            self.timeTableItems = timeTableItems
+            guard let result = timeTableItems as? [TimeTableItem] else { return }
+            self.timeTableItems = result
             expection.fulfill()
         }
         
@@ -104,7 +108,8 @@ class ParserXMLTests: XCTestCase {
         
         // When
         sut.parse(url: mockURL) { timeTableItems in
-            self.timeTableItems = timeTableItems
+            guard let result = timeTableItems as? [TimeTableItem] else { return }
+            self.timeTableItems = result
             expection.fulfill()
         }
         

@@ -32,7 +32,7 @@ struct TrainXMLFile {
 // Parse XML to object
 // Call back
 // Add into table view
-class ParserXML: NSObject {
+class ParserXML: NSObject, Parser {
     
     private var timeTableItems: [TimeTableItem] = []
     private var currentElement = ""
@@ -42,8 +42,7 @@ class ParserXML: NSObject {
     private var currentDestination = ""
     private var isOrigin = false
     
-    
-    func parse(url: String, completionHandler: @escaping ([TimeTableItem]) -> Void) {
+    func parse(url: String, completion: @escaping ([Any]) -> Void) {
         
         guard let api = URL(string: url) else { return }
         
@@ -63,7 +62,7 @@ class ParserXML: NSObject {
             parser.parse()
             
             let timeTableData = self.timeTableItems
-            completionHandler(timeTableData)
+            completion(timeTableData)
         }
         
         task.resume()

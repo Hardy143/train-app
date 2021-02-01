@@ -18,15 +18,17 @@ class StationListViewModel {
         self.jsonParser = jsonParser
     }
     
-    var stations: [StationViewModel] {
+    var savedStations: [StationViewModel] {
         return getListOfStations()
     }
     
     func getStations(completion: @escaping ([StationViewModel]) -> Void) {
-        jsonParser.fetchRailwayStationsFromAPI { (names) in
+        jsonParser.parse(url: TrainAPIEndpoints.allStations) { names in
             var stations: [StationViewModel] = []
             
-            for name in names {
+            guard let stationNames = names as? [String] else { return }
+            
+            for name in stationNames {
                 let station = StationViewModel(name: name)
                 stations.append(station)
             }

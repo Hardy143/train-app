@@ -13,8 +13,9 @@ class DeparturesViewController: UIViewController {
     @IBOutlet weak var stationTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var timeTableCollection: TimeTableCollectionViewModel?
+    var departureListViewModel: DepartureListViewModel?
     var stationName: String?
+    var departureItems: [TimeTableItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,9 @@ class DeparturesViewController: UIViewController {
         
         guard let stationName = stationName else { return }
         
-        timeTableCollection = TimeTableCollectionViewModel(stationName: stationName)
-        timeTableCollection?.parseUrl(completion: { _ in
+        departureListViewModel = DepartureListViewModel(stationName: stationName)
+        departureListViewModel?.parseUrl(completion: { timeTableItems in
+            self.departureItems = timeTableItems
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -42,23 +44,22 @@ class DeparturesViewController: UIViewController {
 extension DeparturesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let timeTableItems = timeTableCollection?.timeTableItems {
-            return timeTableItems.count
-        }
-        return 0
+        return departureItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TimeTableViewCell
         cell.selectionStyle = .none
-        if let timeTableItems = timeTableCollection?.timeTableItems {
-            let timeTableItemViewModel = createTimeTableItemViewModel(destination: timeTableItems[indexPath.row].destination,
-                                                                  departTime: timeTableItems[indexPath.row].departTime,
-                                                                  platform: timeTableItems[indexPath.row].platform)
-            cell.destinationNameLabel.text = timeTableItemViewModel.destination
-            cell.departTimeLabel.text = timeTableItemViewModel.departTime
-            cell.platformNoLabel.text = timeTableItemViewModel.platform
-        }
+        
+        guard let departureListViewModel = departureListViewModel else { return cell }
+        
+        let timeTableItemViewModel =  departureListViewModel.createTimeTableItem(destination: departureItems[indexPath.row].destination,
+                                                              departTime: departureItems[indexPath.row].departTime,
+                                                              platform: departureItems[indexPath.row].platform)
+        
+        cell.destinationNameLabel.text = timeTableItemViewModel.destination
+        cell.departTimeLabel.text = timeTableItemViewModel.departTime
+        cell.platformNoLabel.text = timeTableItemViewModel.platform
 
         return cell
     }
@@ -77,12 +78,6 @@ extension DeparturesViewController {
     private func registerTableViewCells() {
         let customCell = UINib(nibName: "TimeTableViewCell", bundle: nil)
         tableView.register(customCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    private func createTimeTableItemViewModel(destination: String, departTime: String, platform: String) -> TimeTableItemViewModel {
-        
-        let timeTableItem = TimeTableItem(destination: destination, departTime: departTime, platform: platform)
-        return TimeTableItemViewModel(timeTableItem: timeTableItem)
     }
     
 }

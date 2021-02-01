@@ -40,10 +40,13 @@ extension TimeTableItemViewModel {
         let dateFomatterConvert = DateFormatter()
         dateFomatterConvert.dateFormat = "h:mm a"
         
-        if let date = dateFormatterGet.date(from: dateString) {
-            return dateFomatterConvert.string(from: date)
+        guard let date = dateFormatterGet.date(from: dateString) else {
+            print("Error formatting date")
+            return ""
         }
-        return ""
+        
+        return dateFomatterConvert.string(from: date)
+        
     }
     
 }

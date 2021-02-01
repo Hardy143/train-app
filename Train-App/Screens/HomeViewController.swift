@@ -18,14 +18,14 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stations = stationListViewModel.stations
+        stations = stationListViewModel.savedStations
         registerTableViewCells()
         tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        stations = stationListViewModel.stations
+        stations = stationListViewModel.savedStations
         tableView.reloadData()
     }
     
@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
     }
     
     func updateDepartureStations(withStation: Station) {
-        stations = stationListViewModel.stations
+        stations = stationListViewModel.savedStations
         tableView.reloadData()
     }
     
@@ -52,7 +52,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stationListViewModel.stations.count
+        return stationListViewModel.savedStations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

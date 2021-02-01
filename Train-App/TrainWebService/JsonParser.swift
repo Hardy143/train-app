@@ -8,16 +8,10 @@
 
 import Foundation
 
-class JsonParser {
+class JsonParser: Parser {
     
-    private let endpoint: String
-    
-    init(endpoint: String = TrainAPIEndpoints.allStations) {
-        self.endpoint = endpoint
-    }
-    
-    func fetchRailwayStationsFromAPI(completion: @escaping ([String]) -> Void) {
-        guard let railwayURL = URL(string: endpoint) else { return }
+    func parse(url: String, completion: @escaping ([Any]) -> Void) {
+        guard let railwayURL = URL(string: url) else { return }
         URLSession.shared.dataTask(with: railwayURL) { (data, response, error) in
             guard let data = data else { return }
             do {
