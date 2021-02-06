@@ -27,7 +27,12 @@ class StationDataManager: StationDataManagerProtocol {
         }
     }
     
-    func deleteStation(station: Station) {
+    func deleteStation(name: String) {
+        guard let station = fetchStationByName(name: name) else {
+            print("station cannot be found to be deleted")
+            return
+        }
+        
         let objectID = station.objectID
         backgroundContext.performAndWait {
             if let stationInContext = try? backgroundContext.existingObject(with: objectID) {

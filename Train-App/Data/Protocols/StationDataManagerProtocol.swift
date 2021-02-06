@@ -10,7 +10,7 @@ import Foundation
 
 protocol StationDataManagerProtocol {
     func createStation(name: String)
-    func deleteStation(station: Station)
+    func deleteStation(name: String)
     func fetchAllStations() -> [Station]
     func fetchStationByName(name: String) -> Station?
 }

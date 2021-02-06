@@ -24,6 +24,10 @@ class StationViewModel {
         }
     }
     
+    func deleteStation() {
+        stationDataManager.deleteStation(name: name)
+    }
+    
     private func isStationAlreadyAdded() -> Bool {
         if stationDataManager.fetchStationByName(name: name) != nil {
             return true

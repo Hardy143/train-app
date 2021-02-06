@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -118,28 +118,15 @@
                                             <segue destination="Y8S-Mv-agv" kind="show" identifier="showSearch" id="x13-pj-akd"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EMC-nX-AO7">
-                                        <rect key="frame" x="10" y="50" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="9NT-0X-Evs"/>
-                                            <constraint firstAttribute="width" constant="40" id="jI4-DK-Yu4"/>
-                                        </constraints>
-                                        <state key="normal" image="icons8-minus-90 (1)"/>
-                                        <connections>
-                                            <action selector="deleteButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dma-Uk-zml"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.24716970324516296" green="0.24245339632034302" blue="0.28235846757888794" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.16470588235294117" green="0.16078431372549018" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="kr3-0l-Gbm" secondAttribute="bottom" constant="10" id="AgO-xj-alu"/>
                                     <constraint firstItem="1xp-4A-LKl" firstAttribute="top" secondItem="F0b-FK-sJN" secondAttribute="top" constant="50" id="DtQ-1W-R4g"/>
-                                    <constraint firstItem="EMC-nX-AO7" firstAttribute="leading" secondItem="F0b-FK-sJN" secondAttribute="leading" constant="10" id="JJt-k6-dr2"/>
                                     <constraint firstItem="1xp-4A-LKl" firstAttribute="centerX" secondItem="F0b-FK-sJN" secondAttribute="centerX" id="fxp-63-xbq"/>
                                     <constraint firstAttribute="trailing" secondItem="kr3-0l-Gbm" secondAttribute="trailing" constant="10" id="jxZ-y4-LiB"/>
                                     <constraint firstAttribute="height" constant="100" id="lKw-tW-ybU"/>
-                                    <constraint firstAttribute="bottom" secondItem="EMC-nX-AO7" secondAttribute="bottom" constant="10" id="rtL-pg-FQI"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-1A-5wE">
@@ -227,7 +214,6 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icons8-go-back-90" width="90" height="90"/>
-        <image name="icons8-minus-90 (1)" width="90" height="90"/>
         <image name="icons8-plus-90" width="90" height="90"/>
     </resources>
 </document>

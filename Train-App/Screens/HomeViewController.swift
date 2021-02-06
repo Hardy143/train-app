@@ -61,6 +61,14 @@ extension HomeViewController: UITableViewDelegate {
         cell.trainStationName.text = stations[indexPath.row].name
         return cell 
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            chosenStation = StationViewModel(name: stations[indexPath.row].name)
+            chosenStation?.deleteStation()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 
 }
 
