@@ -39,7 +39,7 @@ class ParserXMLTests: XCTestCase {
         }
         
         // Then
-        waitForExpectations(timeout: 1.0) { error in
+        waitForExpectations(timeout: 3.0) { error in
             if let error = error {
                 XCTFail("test failed with error: \(error)")
             }
@@ -60,7 +60,7 @@ class ParserXMLTests: XCTestCase {
         }
         
         // Then
-        waitForExpectations(timeout: 1.0) { error in
+        waitForExpectations(timeout: 3.0) { error in
             if let error = error {
                 XCTFail("test failed with error: \(error)")
             }
@@ -87,7 +87,7 @@ class ParserXMLTests: XCTestCase {
         }
         
         // Then
-        waitForExpectations(timeout: 1.0) { error in
+        waitForExpectations(timeout: 3.0) { error in
             if let error = error {
                 XCTFail("test failed with error: \(error)")
             }
@@ -114,7 +114,7 @@ class ParserXMLTests: XCTestCase {
         }
         
         // Then
-        waitForExpectations(timeout: 1.0) { error in
+        waitForExpectations(timeout: 3.0) { error in
             if let error = error {
                 XCTFail("test failed with error: \(error)")
             }

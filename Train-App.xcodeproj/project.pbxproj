@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99211CA525CEAF410002A5A0 /* StationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99211CA425CEAF410002A5A0 /* StationViewModelTests.swift */; };
+		99211CAC25CEB2AB0002A5A0 /* StationDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99211CAB25CEB2AB0002A5A0 /* StationDataManagerProtocol.swift */; };
+		99211CB425CEB63B0002A5A0 /* StationListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99211CB325CEB63B0002A5A0 /* StationListViewModelTests.swift */; };
 		9927D21725BE0D3E00A3E0A6 /* StationDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927D21625BE0D3E00A3E0A6 /* StationDataManagerTests.swift */; };
 		9927D21D25BE0DD100A3E0A6 /* MockDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927D21C25BE0DD100A3E0A6 /* MockDatabaseManager.swift */; };
 		9928429925C8A00500CA9359 /* DepartureListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9928429825C8A00500CA9359 /* DepartureListViewModelTests.swift */; };
@@ -55,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		99211CA425CEAF410002A5A0 /* StationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModelTests.swift; sourceTree = "<group>"; };
+		99211CAB25CEB2AB0002A5A0 /* StationDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDataManagerProtocol.swift; sourceTree = "<group>"; };
+		99211CB325CEB63B0002A5A0 /* StationListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListViewModelTests.swift; sourceTree = "<group>"; };
 		9927D21625BE0D3E00A3E0A6 /* StationDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDataManagerTests.swift; sourceTree = "<group>"; };
 		9927D21C25BE0DD100A3E0A6 /* MockDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDatabaseManager.swift; sourceTree = "<group>"; };
 		9928429825C8A00500CA9359 /* DepartureListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureListViewModelTests.swift; sourceTree = "<group>"; };
@@ -114,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99211CAA25CEB1D30002A5A0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				99211CAB25CEB2AB0002A5A0 /* StationDataManagerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		9927D22425BE119D00A3E0A6 /* Mock Setup */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +141,8 @@
 			children = (
 				9928429825C8A00500CA9359 /* DepartureListViewModelTests.swift */,
 				992842A525C8AFCD00CA9359 /* TimeTableItemViewModelTests.swift */,
+				99211CA425CEAF410002A5A0 /* StationViewModelTests.swift */,
+				99211CB325CEB63B0002A5A0 /* StationListViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -211,6 +227,7 @@
 		998947FE232E4E7300D54366 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				99211CAA25CEB1D30002A5A0 /* Protocols */,
 				998947FF232E4E9600D54366 /* DatabaseManager.swift */,
 				99BBA64D2364AD10000773F5 /* StationDataManager.swift */,
 				993F8C4121EA72DC00FE744C /* Train_App.xcdatamodeld */,
@@ -394,6 +411,7 @@
 				99B638E5223D6C57004751D8 /* TimeTableItem.swift in Sources */,
 				993F8C4321EA72DC00FE744C /* Train_App.xcdatamodeld in Sources */,
 				9997AA78236643D500F68A5F /* TimeTableItemViewModel.swift in Sources */,
+				99211CAC25CEB2AB0002A5A0 /* StationDataManagerProtocol.swift in Sources */,
 				993F8C3D21EA72DC00FE744C /* HomeViewController.swift in Sources */,
 				99BBA64E2364AD10000773F5 /* StationDataManager.swift in Sources */,
 				993F8C3B21EA72DC00FE744C /* AppDelegate.swift in Sources */,
@@ -412,6 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99211CB425CEB63B0002A5A0 /* StationListViewModelTests.swift in Sources */,
 				99683C8125C6C53200284778 /* ParserXMLTests.swift in Sources */,
 				9928429925C8A00500CA9359 /* DepartureListViewModelTests.swift in Sources */,
 				9927D21725BE0D3E00A3E0A6 /* StationDataManagerTests.swift in Sources */,
@@ -419,6 +438,7 @@
 				99894803232E529A00D54366 /* DatabaseManagerTests.swift in Sources */,
 				9927D21D25BE0DD100A3E0A6 /* MockDatabaseManager.swift in Sources */,
 				99683C8725C6CB6900284778 /* TrainAPIEndpointsTests.swift in Sources */,
+				99211CA525CEAF410002A5A0 /* StationViewModelTests.swift in Sources */,
 				993F8C5321EA72DD00FE744C /* Train_AppTests.swift in Sources */,
 				99683C8D25C88F4D00284778 /* JsonParserTests.swift in Sources */,
 			);

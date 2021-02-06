@@ -10,10 +10,10 @@ import Foundation
 
 class StationListViewModel {
     
-    private let stationDataManager: StationDataManager
-    private let jsonParser: JsonParser
+    private let stationDataManager: StationDataManagerProtocol
+    private let jsonParser: Parser
     
-    init(stationDataManager: StationDataManager = StationDataManager(), jsonParser: JsonParser = JsonParser()) {
+    init(stationDataManager: StationDataManagerProtocol = StationDataManager(), jsonParser: Parser = JsonParser()) {
         self.stationDataManager = stationDataManager
         self.jsonParser = jsonParser
     }

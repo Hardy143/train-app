@@ -8,7 +8,7 @@
 
 import CoreData
 
-class StationDataManager {
+class StationDataManager: StationDataManagerProtocol {
 
     private let mainContext: NSManagedObjectContext
     private let backgroundContext: NSManagedObjectContext

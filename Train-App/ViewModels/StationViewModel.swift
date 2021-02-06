@@ -11,9 +11,9 @@ import Foundation
 class StationViewModel {
     
     let name: String
-    private let stationDataManager: StationDataManager
+    private let stationDataManager: StationDataManagerProtocol
     
-    init(name: String, stationDataManager: StationDataManager = StationDataManager()) {
+    init(name: String, stationDataManager: StationDataManagerProtocol = StationDataManager()) {
         self.name = name
         self.stationDataManager = stationDataManager
     }

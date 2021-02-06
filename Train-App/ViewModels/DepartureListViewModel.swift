@@ -10,18 +10,18 @@ import Foundation
 
 class DepartureListViewModel {
     
-    private let parser: Parser
+    private let xmlParser: Parser
     private let stationName: String
     
     init(stationName: String, parser: Parser = ParserXML()) {
         self.stationName = stationName
-        self.parser = parser
+        self.xmlParser = parser
     }
     
     func parseUrl(completion: @escaping ([TimeTableItem]) -> Void) {
         let apiUrl = TrainAPIEndpoints.getAPI(stationName: stationName)
         
-        parser.parse(url: apiUrl) { timeTableData in
+        xmlParser.parse(url: apiUrl) { timeTableData in
             guard let timeTableItems = timeTableData as? [TimeTableItem] else { return }
             completion(timeTableItems)
         }
