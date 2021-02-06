@@ -67,6 +67,7 @@ extension HomeViewController: UITableViewDelegate {
             chosenStation = StationViewModel(name: stations[indexPath.row].name)
             chosenStation?.deleteStation()
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.reloadData()
         }
     }
 
