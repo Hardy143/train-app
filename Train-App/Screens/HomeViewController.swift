@@ -30,6 +30,8 @@ class HomeViewController: UIViewController {
     }
     
     func registerTableViewCells() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60
         tableView.backgroundColor = .nightBlack
         let customCell = UINib(nibName: "StationNameViewCell", bundle: nil)
         tableView.register(customCell, forCellReuseIdentifier: "StationNameViewCell")
