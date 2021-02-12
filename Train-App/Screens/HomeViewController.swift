@@ -39,20 +39,12 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "showSearch", sender: nil)
     }
     
-    @IBAction func deleteButtonPressed(_ sender: Any) {
-    }
-    
-    func updateDepartureStations(withStation: Station) {
-        stations = stationListViewModel.savedStations
-        tableView.reloadData()
-    }
-    
 }
 
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stationListViewModel.savedStations.count
+        return stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,9 +57,15 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             chosenStation = StationViewModel(name: stations[indexPath.row].name)
-            chosenStation?.deleteStation()
+            guard let station = chosenStation else {
+                print("Station to delete is nil")
+                return
+            }
+            
+            station.deleteStation()
+            stations.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            tableView.reloadData()
+        
         }
     }
 
