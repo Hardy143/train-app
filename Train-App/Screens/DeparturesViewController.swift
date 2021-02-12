@@ -36,7 +36,7 @@ class DeparturesViewController: UIViewController {
     
     
     @IBAction func backButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "returnHome", sender: nil)
+        performSegue(withIdentifier: "unwindToHome", sender: self)
     }
     
 }
