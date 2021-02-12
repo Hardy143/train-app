@@ -115,7 +115,6 @@
                                         </constraints>
                                         <state key="normal" image="icons8-plus-90"/>
                                         <connections>
-                                            <action selector="addButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbc-hP-5QA"/>
                                             <segue destination="Y8S-Mv-agv" kind="show" identifier="showSearch" id="x13-pj-akd"/>
                                         </connections>
                                     </button>

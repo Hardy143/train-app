@@ -28,7 +28,7 @@ class StationListViewModelTests: XCTestCase {
         
         func fetchStationByName(name: String) -> Station? { return nil }
         func createStation(name: String) {}
-        func deleteStation(station: Station) {}
+        func deleteStation(name: String) {}
         
         func fetchAllStations() -> [Station] {
             isFetchAllStationsCalled = true

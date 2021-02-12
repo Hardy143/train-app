@@ -96,16 +96,11 @@ extension StationDataManagerTests {
     func test_deleteStation_CountIs0() {
         // Given
         createMockData(with: 1)
-        let testStation = fetchAllStations().first
+        let testStationName = "test1"
         let expectedCount = 0
         
-        guard let station = testStation else {
-            XCTFail("No stations fetched")
-            return
-        }
-        
         // When
-        sut.deleteStation(station: station)
+        sut.deleteStation(name: testStationName)
         
         // Then
         let actualCount = fetchAllStations().count
@@ -115,15 +110,14 @@ extension StationDataManagerTests {
     func test_deleteStation_test1IsDeleted() {
         // Given
         createMockData(with: 4)
-        let stationToDelete = fetchAllStations()[1]
-        let stationId = stationToDelete.objectID
+        let stationToDeleteName = "test3"
         
         // When
-        sut.deleteStation(station: stationToDelete)
+        sut.deleteStation(name: stationToDeleteName)
         
         // Then
         let result = sut.fetchAllStations()
-        let exists = result.contains(where: { $0.objectID == stationId })
+        let exists = result.contains(where: { $0.name == stationToDeleteName })
         
         XCTAssertFalse(exists)
     }

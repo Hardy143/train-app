@@ -15,7 +15,7 @@ class StationViewModelTests: XCTestCase {
     var mockStationDataManager: MockStationDataManager!
     
     class MockStationDataManager: StationDataManagerProtocol {
-        
+
         var isStationFetched: Bool
         var isCreateStationCalled = false
         
@@ -34,7 +34,7 @@ class StationViewModelTests: XCTestCase {
             return nil
         }
         
-        func deleteStation(station: Station) {}
+        func deleteStation(name: String) {}
         func fetchAllStations() -> [Station] { return [] }
         
     }
